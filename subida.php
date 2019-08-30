@@ -34,52 +34,43 @@ if (isset($_REQUEST['enviado']) && ($_REQUEST['enviado'] == "si")) {
     <main>
         <div class="container">
             <form method="post" name="archivo" enctype="multipart/form-data" action="subida-db.php">
-                
 
-
-                <h1> Sociedad de Fomento </h1>
+                <h1 class="titulo"> Sociedad de Fomento </h1>
                 <h4> Reporte de problemas </h4>
 
                 <p>
-                <label>Nombre: </label>
-                <label for="nombre"></label>
-                <input type="text" name="nombre" id="nombre" />
-                </p>
-                <p>
-                <label>Apellido: </label>
-                <label for="apellido"></label>
-                <input type="text" name="apellido" id="apellido" />
-                </p>
-                <p>
-                <label> Descripcion del problema: </label>
-                <label for="descripcion"></label>
+                    <label>Nombre: </label>
+                    <label for="nombre"></label>
+                    <input type="text" name="nombre" id="nombre" />
                 </p>
 
                 <p>
-                <textarea name="descripcion" id="descripcion" cols="45" rows="5"></textarea>
+                    <label>Apellido: </label>
+                    <label for="apellido"></label>
+                    <input type="text" name="apellido" id="apellido" />
+                </p>
+
+                <p>
+                    <label> Descripcion del problema: </label>
+                    <label for="descripcion"></label>
+                </p>
+                <p>
+                    <textarea name="descripcion" id="descripcion" cols="45" rows="5"></textarea>
                 </p>
                
-               <p>
-                <div class="form-group">
-                    <label for="exampleInputFile">Adjuntar imagen:</label>
-                    <input name="adjunto" type="file" class="form-control-file" id="adjunto" aria-describedby="fileHelp">
-                    
-                </div>
+                <p>
+                    <div class="form-group">
+                        <label for="exampleInputFile">Adjuntar imagen:</label>
+                        <input name="adjunto" type="file" class="form-control-file" id="adjunto" aria-describedby="fileHelp">
+                    </div>
                 </p>
-
                 
                 <p>
-                <button type="submit" class="btn btn-primary" name="enviar" value="enviar">Enviar</button>
-                <input type="hidden" name="enviado" value="si"/>
+                    <button type="submit" class="btn btn-primary" name="enviar" value="enviar">Enviar</button>
                 <p>
 
-
-                <input  id="longitud" name="longitud" value="0" /> 
-                <input id="latitud" name="latitud" value="0" /> 
-
-
-
-
+                <input type="hidden" id="longitud" name="longitud" value="0" /> 
+                <input type="hidden" id="latitud" name="latitud" value="0" /> 
 
             </form>
         </div>
