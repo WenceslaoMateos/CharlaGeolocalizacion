@@ -116,25 +116,22 @@ function hacerCuandoSeleccione(that) {
         content.innerHTML = "";
         var claves = Object.keys(propiedades);
         claves = claves.filter(item => item != "geometry");
-        claves = claves.filter(item => item != "id");
-        claves = claves.filter(item => item != "campaniaid");
         claves = claves.filter(item => item != "type");
+        claves = claves.filter(item => item != "foto");
+        claves = claves.filter(item => item != "lat");
+        claves = claves.filter(item => item != "lon");
         claves = claves.filter(item => item != "styleUrl");
-        if (propiedades.tipo == "batimetria") {
-            aux += '<form method="post" enctype="multipart/form-data">';
-            aux += '  <input class="d-none" value="' + propiedades.nombre + '" id="batim" name="batim">';
-            aux += '  <button type="submit" class="btn btn-success">';
-            aux += '  Descargar';
-            aux += '  </button>';
-            aux += '</form>';
-        }
-        claves = claves.filter(item => item != "tipo");
-        claves = claves.filter(item => item != "nombre");
         claves.forEach((clave) => {
             if (propiedades[clave] != "") {
                 content.innerHTML += clave + ": " + propiedades[clave] + "<br>";
             }
         });
+        aux += '<form method="post" enctype="multipart/form-data">';
+        aux += '  <input class="d-none" value="' + propiedades.foto + '" id="foto" name="foto">';
+        aux += '  <button type="submit" class="btn btn-success">';
+        aux += '  Descargar';
+        aux += '  </button>';
+        aux += '</form>';
         content.innerHTML += aux;
     }
     select.getFeatures().clear();
