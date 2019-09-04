@@ -123,13 +123,25 @@ function hacerCuandoSeleccione(that) {
         claves = claves.filter(item => item != "styleUrl");
         claves.forEach((clave) => {
             if (propiedades[clave] != "") {
-                content.innerHTML += clave + ": " + propiedades[clave] + "<br>";
+                if (clave == "nombre"){
+                content.innerHTML += "Nombre" + ": " + propiedades[clave] + "<br>";
+                }
+                if (clave == "apellido"){
+                    content.innerHTML += "Apellido" + ": " + propiedades[clave] + "<br>";
+                    }
+                if (clave == "descripcion"){
+                        content.innerHTML += "Descripcion" + ": " + propiedades[clave] + "<br>";
+                }
+                
+                
+
+
             }
         });
         aux += '<form method="post" enctype="multipart/form-data">';
         aux += '  <input class="d-none" value="' + propiedades.foto + '" id="foto" name="foto">';
-        aux += '  <button type="submit" class="btn btn-success">';
-        aux += '  Descargar';
+        aux += ' <br> <button type="submit" class="btn btn-success">';
+        aux += '  Descargar imagen';
         aux += '  </button>';
         aux += '</form>';
         content.innerHTML += aux;

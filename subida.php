@@ -29,6 +29,8 @@ if (isset($_REQUEST['enviado']) && ($_REQUEST['enviado'] == "si")) {
         <script src="./jquery/jquery.min.js"></script>
         <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <script src="./bootstrap/js/bootstrap.min.js"></script>
+        
+        
     </head>
 <body>
     <main>
@@ -36,7 +38,7 @@ if (isset($_REQUEST['enviado']) && ($_REQUEST['enviado'] == "si")) {
             <form method="post" name="archivo" enctype="multipart/form-data" action="subida-db.php">
 
                 <h1 class="titulo"> Sociedad de Fomento </h1>
-                <h4> Reporte de problemas </h4>
+                <h4 class="subtitulo"> Reporte de problemas </h4>
 
                 <p>
                     <label>Nombre: </label>

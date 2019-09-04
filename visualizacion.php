@@ -48,42 +48,12 @@ if (isset($_REQUEST['foto'])) {
 </head>
 
 <body>
-    <h1 class="titulo"> Reclamo sociedad de fomento </h1>
+    <h1 class="titulo"> Mapa de visualizacion</h1>
 
+    <div class="subtitulo"> Reclamos en la Sociedad de Fomento </div>
 
-    <div class="col-md-6">
-        <div class="datos">
-            <p>
-                <label>Nombre: </label>
-                <label for="nombre"></label>
-                <input type="text" name="nombre" id="nombre" />
-            </p>
-
-            <p>
-                <label>Apellido: </label>
-                <label for="apellido"></label>
-                <input type="text" name="apellido" id="apellido" />
-            </p>
-
-            <p>
-                <label> Descripcion del problema: </label>
-                <label for="descripcion"></label>
-            </p>
-
-            <p>
-                <textarea name="descripcion" id="descripcion" cols="45" rows="5"></textarea>
-            </p>
-
-            <p> Imagen: </p>
-            <img>
-
-
-        </div>
-    </div>
-
-    <div class="col-md-6">
-        <div class="mapa" id="map"></div>
-    </div>
+    <div class="mapa" id="map"></div>
+    
 
     <div id="popup" class="ol-popup bg-secondary" style="display: none;">
         <a href="#" id="popup-closer" class="ol-popup-closer"></a>
