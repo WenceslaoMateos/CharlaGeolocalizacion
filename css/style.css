@@ -1,11 +1,9 @@
-html {
-    box-sizing: border-box;
-    font-size: 62.5%; /** 1rem = 10px **/
-}
-*, *:before, *:after {
-    box-sizing: inherit;
-}
 
+body{
+    background-image: url(../fondo.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
 .titulo{
     font-size: 40px;
     text-align: center;
@@ -20,12 +18,21 @@ html {
 
 }
 
+
 .mapa{
     max-width: 1200px;
     width: 95%;
     margin: 0 auto;
 
 }
+
+#formu{
+    
+    font-size:18px;
+    padding-top:30px;
+    margin-left: 320px;
+}
+
 
 
 

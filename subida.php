@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <title>Sociedad de Fomento</title>
-    <script src="./jquery/jquery.min.js"></script>
-    <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <script src="./bootstrap/js/bootstrap.min.js"></script>
-</head>
-
+    <head>
+        <title>Sociedad de Fomento</title>
+        <script src="./jquery/jquery.min.js"></script>
+        <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <script src="./bootstrap/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="css/style.css">
+        
+    </head>
 <body>
     <main>
         <div class="container">
@@ -15,7 +15,7 @@
 
                 <h1 class="titulo"> Sociedad de Fomento </h1>
                 <h4 class="subtitulo"> Reporte de problemas </h4>
-
+                <div id="formu">
                 <p>
                     <label>Nombre: </label>
                     <label for="nombre"></label>
@@ -53,6 +53,7 @@
                 </p>
             </form>
         </div>
+   
     </main>
     <script>
         /**
