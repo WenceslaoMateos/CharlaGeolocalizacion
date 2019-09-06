@@ -1,24 +1,17 @@
 <?php
 require('coneccion.php');
 /**
- * En caso de que se pida descargar una foto especifica, se descarga la misma, sino, se genera el
- * objeto correspondiente para su muestra en el mapa.
+ * Genera el objeto correspondiente para su muestra en el mapa.
  */
-if (isset($_REQUEST['foto'])) {
-    $foto = $_REQUEST['foto'];
-    header("Content-type: application/octet-stream");
-    header("Content-disposition: attachment; filename=foto.pdf");
-    readfile("fotos/$foto");
-} else {
-    $sql = mysqli_query($db, 'SELECT foto, ST_X(posicion) as lat, ST_Y(posicion) as lon, nombre, apellido, descripcion FROM sociedad');
-    $i = 0;
-    $resultado = '[';
-    if ($sql) {
-        while ($row = mysqli_fetch_array($sql)) {
-            if ($i != 0)
-                $resultado .= ',';
-            $i++;
-            $resultado .= '
+$sql = mysqli_query($db, 'SELECT foto, ST_X(posicion) as lat, ST_Y(posicion) as lon, nombre, apellido, descripcion FROM sociedad');
+$i = 0;
+$resultado = '[';
+if ($sql) {
+    while ($row = mysqli_fetch_array($sql)) {
+        if ($i != 0)
+            $resultado .= ',';
+        $i++;
+        $resultado .= '
         {
             "foto":"' . $row['foto'] . '",
             "lat":' . $row['lat'] . ',
@@ -27,10 +20,9 @@ if (isset($_REQUEST['foto'])) {
             "apellido":"' . $row['apellido'] . '",
             "descripcion":"' . $row['descripcion'] . '"
         }';
-        }
     }
-    $resultado .= "]";
 }
+$resultado .= "]";
 ?>
 
 <!DOCTYPE html>

@@ -6,7 +6,7 @@ var vectorLayer = new ol.layer.Vector({
     style: new ol.style.Style({
         image: new ol.style.Icon({
             src: 'marker.png',
-            anchor:[0.5, 1],
+            anchor: [0.5, 1],
             scale: 0.1
         })
     })
@@ -113,12 +113,9 @@ function hacerCuandoSeleccione(that) {
                 }
             }
         });
-        aux += '<form method="post" enctype="multipart/form-data">';
-        aux += '  <input class="d-none" value="' + propiedades.foto + '" id="foto" name="foto">';
-        aux += ' <br> <button type="submit" class="btn btn-success">';
+        aux += ' <br> <a href="fotos/' + propiedades.foto + '"><button class="btn btn-success">';
         aux += '  Descargar imagen';
-        aux += '  </button>';
-        aux += '</form>';
+        aux += '  </button></a>';
         content.innerHTML += aux;
     }
     select.getFeatures().clear();
