@@ -1,37 +1,13 @@
-<?php
-
-/**require('templates/coneccion.php');
-
-if (isset($_REQUEST['enviado']) && ($_REQUEST['enviado'] == "si")) {
-    $original = $_REQUEST['nombre'];
-    $coordinates = explode(',', $original);
-    $filename = str_replace('-','m',$original);
-    // /*
-    exec("gmt grdview " . $_FILES['adjunto']['tmp_name'] . " " . $_REQUEST["-Wc"] . " -B1a2 -BWSneZ+b+tBatimetrico -JM-57/-38/7i " . $_REQUEST["tipoImagen"] . " -JZ4i -P -p170/20 -Cmagma.cpt > '$filename'.ps");
-    exec("gmt psconvert -Tf -Z -A4 -E720 '$filename'.ps");
-    exec("mv '$filename'.pdf batimetrias/");
-    exec("rm '$filename'.ps");
-    exec("rm gmt.history");
-    $sql = mysqli_query($db, "  INSERT INTO batimetrias (W, S, E, N, nombre) 
-                                VALUES (" . $coordinates[0] . ",
-                                    " . $coordinates[1] . ", 
-                                    " . $coordinates[2] . ", 
-                                    " . $coordinates[3] . ", '$filename');");
-    header("Content-type: application/octet-stream");
-    header("Content-disposition: attachment; filename=batimetria.pdf");
-    readfile("batimetrias/$filename.pdf");
-} else
-*/?>
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Sociedad de Fomento</title>
-        <script src="./jquery/jquery.min.js"></script>
-        <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <script src="./bootstrap/js/bootstrap.min.js"></script>
-        
-        
-    </head>
+
+<head>
+    <title>Sociedad de Fomento</title>
+    <script src="./jquery/jquery.min.js"></script>
+    <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+</head>
+
 <body>
     <main>
         <div class="container">
@@ -59,42 +35,47 @@ if (isset($_REQUEST['enviado']) && ($_REQUEST['enviado'] == "si")) {
                 <p>
                     <textarea name="descripcion" id="descripcion" cols="45" rows="5"></textarea>
                 </p>
-               
+
                 <p>
                     <div class="form-group">
                         <label for="exampleInputFile">Adjuntar imagen:</label>
                         <input name="adjunto" type="file" class="form-control-file" id="adjunto" aria-describedby="fileHelp">
                     </div>
                 </p>
-                
+
                 <p>
                     <button type="submit" class="btn btn-primary" name="enviar" value="enviar">Enviar</button>
-                <p>
+                    <p>
 
-                <input type="hidden" id="longitud" name="longitud" value="0" /> 
-                <input type="hidden" id="latitud" name="latitud" value="0" /> 
-
+                        <input type="hidden" id="longitud" name="longitud" value="0" />
+                        <input type="hidden" id="latitud" name="latitud" value="0" />
+                    </p>
+                </p>
             </form>
         </div>
     </main>
     <script>
+        /**
+         * Obtiene la posición actual y la enlaza con el collback correspondiente
+         */
         function getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
-        } else {
-            alert("Geolocation is not supported by this browser.");
-        }
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
         }
 
+        /**
+         * Cambia los valores de los elementos del formulario con los valores actuales de la posición.
+         */
         function showPosition(position) {
-        $("#longitud").val(position.coords.longitude);
-        $("#latitud").val( position.coords.latitude);
-        console.log();
+            $("#longitud").val(position.coords.longitude);
+            $("#latitud").val(position.coords.latitude);
         }
-        
+
         getLocation();
-
-
     </script>
-    </body>
+</body>
+
 </html>
