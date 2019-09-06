@@ -2,7 +2,14 @@
  * Variable de capa donde van a ir nuestros objetos.
  */
 var vectorLayer = new ol.layer.Vector({
-    source: new ol.source.Vector()
+    source: new ol.source.Vector(),
+    style: new ol.style.Style({
+        image: new ol.style.Icon({
+            src: 'marker.png',
+            anchor:[0.5, 1],
+            scale: 0.1
+        })
+    })
 });
 
 /**
