@@ -1,75 +1,44 @@
-var vectorLayer;
 /**
- * 
+ * Variable de capa donde van a ir nuestros objetos.
  */
-var vecAux = [];
-function creaFeatures(datos) {
-    var i;
-    var aux;
-    var elemento;
-    for (i = 0; i < datos.length; i++) {
-        elemento = datos[i];
-        aux = new ol.Feature({
-            type: 'point',
-            geometry: new ol.geom.Point(ol.proj.transform([elemento.lat, elemento.lon], 'EPSG:4326', 'EPSG:3857')),
-            foto: elemento.foto,
-            lat: elemento.lat,
-            lon: elemento.lon,
-            nombre: elemento.nombre,
-            apellido: elemento.apellido,
-            descripcion: elemento.descripcion
-        });
-        //console.log(aux);
-        vecAux.push(aux);
-    }
+var vectorLayer = new ol.layer.Vector({
+    source: new ol.source.Vector()
+});
 
-    vectorLayer = new ol.layer.Vector({
-        source: new ol.source.Vector({
-            features: vecAux
-        })
-    })
+/**
+ * Funcion que crea los features necesarios para luego ser mostrados en el mapa.
+ * @param {Array} datos Vector de datos para poner en el mapa.
+ */
+function makeFeatures(datos) {
+    var vecAux = [];
+    var i;
+    for (i = 0; i < datos.length; i++) {
+        vecAux.push(new ol.Feature({
+            type: 'point',
+            geometry: new ol.geom.Point(ol.proj.transform([datos[i].lat, datos[i].lon], 'EPSG:4326', 'EPSG:3857')),
+            foto: datos[i].foto,
+            lat: datos[i].lat,
+            lon: datos[i].lon,
+            nombre: datos[i].nombre,
+            apellido: datos[i].apellido,
+            descripcion: datos[i].descripcion
+        }));
+    }
+    vectorLayer.getSource().addFeatures(vecAux);
 }
 
-creaFeatures(datos);
+makeFeatures(datos);
 
+/**
+ * Variables necesarias para la creación del popup
+ */
 var container = document.getElementById('popup');
 var content = document.getElementById('popup-content');
 var closer = document.getElementById('popup-closer');
 
 /**
-*Funcion que le da un estilo al vector correspondiente a los barcos.
-*/
-var styleFunction = function (feature) {
-    var propiedades = feature.getProperties();
-    var rotation = (propiedades['angulo'] * Math.PI) / 180;
-    if (propiedades['type'] === 'point' && propiedades['angulo'] != "") {
-        style = new ol.style.Style({
-            image: new ol.style.Icon({
-                src: './images/arrow.png',
-                opacity: 1,
-                scale: 0.1,
-                rotateWithView: true,
-                rotation: rotation
-            })
-        });
-    }
-    else {
-        style = new ol.style.Style({
-            stroke: new ol.style.Stroke({
-                color: '#777777',
-                width: 4
-            })
-        })
-    }
-    return [style]
-};
-
-/**
-  *1-Hacer un mapa
-  *2-Conseguir las pps
-  *3-???????????
-  *4-profit
-  */
+ * Overlay para poder mostrar el popup dentro del mapa.
+ */
 var overlay = new ol.Overlay({
     element: container,
     autoPan: true,
@@ -93,18 +62,21 @@ var map = new ol.Map({
 });
 
 /**
-  *Funcion que al hacer click en el closer se cierra en degradé.
-  */
+ * Funcion que al hacer click en el closer lo cierra.
+ */
 closer.onclick = function () {
     $("#popup").fadeOut();
     return false;
 }
 
+/**
+ * Variable de interaccion con el evento "click".
+ */
 var select = new ol.interaction.Select({ condition: ol.events.condition.click });
 
 /**
-  *Funcion que al seleccionar "that" busca los atributos del "that" y los escribe dentro del popup.
-  */
+ * Funcion que al seleccionar "that" busca los atributos del "that" y los escribe dentro del popup.
+ */
 function hacerCuandoSeleccione(that) {
     if (that.selected.length >= 1) {
         var geometria = that.selected[0].getGeometry();
@@ -123,19 +95,15 @@ function hacerCuandoSeleccione(that) {
         claves = claves.filter(item => item != "styleUrl");
         claves.forEach((clave) => {
             if (propiedades[clave] != "") {
-                if (clave == "nombre"){
-                content.innerHTML += "Nombre" + ": " + propiedades[clave] + "<br>";
+                if (clave == "nombre") {
+                    content.innerHTML += "Nombre" + ": " + propiedades[clave] + "<br>";
                 }
-                if (clave == "apellido"){
+                if (clave == "apellido") {
                     content.innerHTML += "Apellido" + ": " + propiedades[clave] + "<br>";
-                    }
-                if (clave == "descripcion"){
-                        content.innerHTML += "Descripcion" + ": " + propiedades[clave] + "<br>";
                 }
-                
-                
-
-
+                if (clave == "descripcion") {
+                    content.innerHTML += "Descripcion" + ": " + propiedades[clave] + "<br>";
+                }
             }
         });
         aux += '<form method="post" enctype="multipart/form-data">';
@@ -149,7 +117,9 @@ function hacerCuandoSeleccione(that) {
     select.getFeatures().clear();
 }
 
-//Al seleccionar un elemento este debe desplegar el popup
+/**
+ * Al seleccionar un elemento este debe desplegar el popup
+ */
 map.addInteraction(select);
 select.on('select', hacerCuandoSeleccione, this);
 
