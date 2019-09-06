@@ -1,5 +1,5 @@
 body {
-    background-image: url(../fondo.jpg);
+    background-image: url(../recursos/fondo.jpg);
     background-repeat: no-repeat;
     background-position: center center;
 }
@@ -23,7 +23,7 @@ body {
     margin: 0 auto;
 }
 
-#formu {
+#formulario {
     font-size: 18px;
     padding-top: 30px;
     margin-left: 320px;
