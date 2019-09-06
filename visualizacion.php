@@ -1,5 +1,9 @@
 <?php
 require('coneccion.php');
+/**
+ * En caso de que se pida descargar una foto especifica, se descarga la misma, sino, se genera el
+ * objeto correspondiente para su muestra en el mapa.
+ */
 if (isset($_REQUEST['foto'])) {
     $foto = $_REQUEST['foto'];
     header("Content-type: application/octet-stream");
@@ -53,7 +57,7 @@ if (isset($_REQUEST['foto'])) {
     <div class="subtitulo"> Reclamos en la Sociedad de Fomento </div>
 
     <div class="mapa" id="map"></div>
-    
+
 
     <div id="popup" class="ol-popup bg-secondary" style="display: none;">
         <a href="#" id="popup-closer" class="ol-popup-closer"></a>
