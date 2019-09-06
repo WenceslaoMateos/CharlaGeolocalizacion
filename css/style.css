@@ -1,37 +1,30 @@
-
-body{
+body {
     background-image: url(../fondo.jpg);
     background-repeat: no-repeat;
     background-position: center center;
 }
-.titulo{
+
+.titulo {
     font-size: 40px;
     text-align: center;
-    
     margin-top: 40px;
 }
-.subtitulo{
+
+.subtitulo {
     font-size: 30px;
     color: grey;
     text-align: center;
     margin-bottom: 20px;
-
 }
 
-
-.mapa{
+.mapa {
     max-width: 1200px;
     width: 95%;
     margin: 0 auto;
-
 }
 
-#formu{
-    
-    font-size:18px;
-    padding-top:30px;
+#formu {
+    font-size: 18px;
+    padding-top: 30px;
     margin-left: 320px;
 }
-
-
-

@@ -1,18 +1,19 @@
 html {
     box-sizing: border-box;
-    font-size: 62.5%; /** 1rem = 10px **/
+    font-size: 62.5%;
+    /** 1rem = 10px **/
 }
+
 *, *:before, *:after {
     box-sizing: inherit;
 }
 
-.container{
+.container {
     max-width: 2000px;
     width: 95%;
-    
 }
 
-.titulo_index{
+.titulo_index {
     font-size: 30px;
     text-align: center;
     margin: 30px;

@@ -43,12 +43,8 @@ $resultado .= "]";
 
 <body>
     <h1 class="titulo"> Mapa de visualizacion</h1>
-
     <div class="subtitulo"> Reclamos en la Sociedad de Fomento </div>
-
     <div class="mapa" id="map"></div>
-
-
     <div id="popup" class="ol-popup bg-secondary" style="display: none;">
         <a href="#" id="popup-closer" class="ol-popup-closer"></a>
         <div id="popup-content" class="text-white"></div>

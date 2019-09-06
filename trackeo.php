@@ -1,28 +1,18 @@
 <?php
 require('coneccion.php');
+
 /**
- * En caso de que se esté pidiendo descargar una foto, la misma se descarga en el dispositivo del 
- * usuario.
+ * Se genera el objeto con los elementos de la base de datos.
  */
-if (isset($_REQUEST['foto'])) {
-    $foto = $_REQUEST['foto'];
-    header("Content-type: application/octet-stream");
-    header("Content-disposition: attachment; filename=$foto");
-    readfile("fotos/$foto");
-} else {
-    /**
-     * En caso contrario, se esta accediendo a la pagina por primera vez y se genera el objeto con 
-     * los elementos de la base de datos.
-     */
-    $sql = mysqli_query($db, 'SELECT foto, ST_X(posicion) as lat, ST_Y(posicion) as lon, nombre, apellido, descripcion FROM sociedad');
-    $i = 0;
-    $resultado = '[';
-    if ($sql) {
-        while ($row = mysqli_fetch_array($sql)) {
-            if ($i != 0)
-                $resultado .= ',';
-            $i++;
-            $resultado .= '
+$sql = mysqli_query($db, 'SELECT foto, ST_X(posicion) as lat, ST_Y(posicion) as lon, nombre, apellido, descripcion FROM sociedad');
+$i = 0;
+$resultado = '[';
+if ($sql) {
+    while ($row = mysqli_fetch_array($sql)) {
+        if ($i != 0)
+            $resultado .= ',';
+        $i++;
+        $resultado .= '
         {
             "foto":"' . $row['foto'] . '",
             "lat":' . $row['lat'] . ',
@@ -31,10 +21,9 @@ if (isset($_REQUEST['foto'])) {
             "apellido":"' . $row['apellido'] . '",
             "descripcion":"' . $row['descripcion'] . '"
         }';
-        }
     }
-    $resultado .= "]";
 }
+$resultado .= "]";
 ?>
 
 <!DOCTYPE html>
