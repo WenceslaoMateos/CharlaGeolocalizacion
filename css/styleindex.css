@@ -4,6 +4,10 @@ html {
     /** 1rem = 10px **/
 }
 
+body{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;  
+}
+
 *, *:before, *:after {
     box-sizing: inherit;
 }
@@ -14,7 +18,20 @@ html {
 }
 
 .titulo_index {
-    font-size: 30px;
+    font-size: 40px;
     text-align: center;
     margin: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+.textoejemplos{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.links{
+    font-size: 30px;
+    margin-top:20px;
+    margin-bottom: 20px;
+    color: grey;
 }

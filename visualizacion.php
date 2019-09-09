@@ -1,5 +1,6 @@
 <?php
-require('coneccion.php');
+require('conexion.php');
+
 /**
  * Genera el objeto correspondiente para su muestra en el mapa.
  */

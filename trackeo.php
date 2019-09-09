@@ -1,5 +1,5 @@
 <?php
-require('coneccion.php');
+require('conexion.php');
 
 /**
  * Se genera el objeto con los elementos de la base de datos.
