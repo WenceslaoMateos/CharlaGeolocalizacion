@@ -10,6 +10,5 @@ exec("mv '$filename' fotos/$filename");
 require('conexion.php');
 $query = "  INSERT INTO sociedad (foto, posicion, nombre, apellido, descripcion) 
             VALUES ('$filename', ST_GeomFromText('POINT($longitud $latitud)', 4326), '$nombre', '$apellido', '$descripcion');";
-echo $query;
 mysqli_query($db, $query);
 header("location: visualizacion.php");
