@@ -113,9 +113,9 @@ function hacerCuandoSeleccione(that) {
                 }
             }
         });
-        aux += ' <br> <a href="fotos/' + propiedades.foto + '"><button class="btn btn-success">';
-        aux += '  Descargar imagen';
-        aux += '  </button></a>';
+        aux += ' <a href="fotos/' + propiedades.foto + '">';
+        aux += '    <img class="imagen" src="fotos/' + propiedades.foto + '">'
+        aux += ' </a>';
         content.innerHTML += aux;
     }
     select.getFeatures().clear();
