@@ -1,31 +1,3 @@
-<?php
-require('conexion.php');
-
-/**
- * Se genera el objeto con los elementos de la base de datos.
- */
-$sql = mysqli_query($db, 'SELECT foto, ST_X(posicion) as lat, ST_Y(posicion) as lon, nombre, apellido, descripcion FROM sociedad');
-$i = 0;
-$resultado = '[';
-if ($sql) {
-    while ($row = mysqli_fetch_array($sql)) {
-        if ($i != 0)
-            $resultado .= ',';
-        $i++;
-        $resultado .= '
-        {
-            "foto":"' . $row['foto'] . '",
-            "lat":' . $row['lat'] . ',
-            "lon":' . $row['lon'] . ',
-            "nombre":"' . $row['nombre'] . '",
-            "apellido":"' . $row['apellido'] . '",
-            "descripcion":"' . $row['descripcion'] . '"
-        }';
-    }
-}
-$resultado .= "]";
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
