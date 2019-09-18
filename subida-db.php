@@ -1,9 +1,9 @@
 <?php
 $currentDir = getcwd();
 $uploadDirectory = "/fotos/";
-$filename = $_FILES['adjunto']['name'][0];
-$tmpname = $_FILES['adjunto']['tmp_name'][0];
-$uploadPath = $currentDir . $uploadDirectory . basename($filename);
+$filename = $_FILES['adjunto']['name'];
+$tmpname = $_FILES['adjunto']['tmp_name'];
+$uploadPath = $currentDir . $uploadDirectory . $filename;
 
 $nombre = $_REQUEST['nombre'];
 $apellido = $_REQUEST['apellido'];
